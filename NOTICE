@@ -1,0 +1,36 @@
+X-Agents
+Copyright (c) 2026 seeker19110
+
+Toàn bộ repo (mã, prompt agent, skill, tài liệu) phát hành theo Apache License 2.0 — xem LICENSE —
+trừ các thành phần bên thứ ba liệt kê dưới đây, giữ nguyên giấy phép gốc của chúng.
+
+Thành phần bên thứ ba
+---------------------
+
+ECC (affaan-m/ECC) v2.2.2, commit c70874fae9eb0e5ad0365beb7e2955899fd1d30f — .claude/skills/ecc-*/
+  Copyright (c) 2026 Affaan Mustafa. Giấy phép: MIT (docs/integrations/ecc.LICENSE).
+  Chọn lọc và ghim phiên bản: docs/integrations/ecc.lock.json.
+
+mattpocock/skills, commit 49dd158d1076134a641b33efb035946536778336 — .claude/skills/mp-*/
+  Copyright (c) 2026 Matt Pocock. Giấy phép: MIT (docs/integrations/mattpocock.LICENSE).
+  Chọn lọc và ghim phiên bản: docs/integrations/mattpocock.lock.json.
+
+Khung X-Templates — .xtemplates/ và các hook chép từ khung trong .claude/hooks/
+  Copyright (c) 2026 seeker19110. Giấy phép: MIT (https://github.com/seeker19110/X-Templates).
+
+Lịch sử git
+-----------
+
+Repo bắt đầu là fork của humanlayer/12-factor-agents (commit từ 2025-03-30 đến 2026-08-10; xem
+ARCHITECTURE.md §Lịch sử repo). Nội dung đó đã gỡ khỏi cây hiện tại ở commit c1ecd41 nhưng vẫn còn
+trong lịch sử git: mã theo Apache License 2.0, nội dung văn bản và hình (img/, 12-factor-agents*.md,
+packages/create-12-factor-agent/) theo Creative Commons BY-SA 4.0, bản quyền của HumanLayer và các
+tác giả đóng góp. Dùng lại nội dung đó từ lịch sử phải theo giấy phép gốc của nó.
+
+Nhãn hiệu
+---------
+
+Tên sản phẩm và tổ chức nhắc trong repo (ví dụ Claude, Anthropic, OpenAI, Google, Gemini, GitHub,
+Docker; Techcombank, VietQR, NAPAS 247 trên ảnh mã ủng hộ docs/assets/) là nhãn hiệu của chủ sở hữu
+tương ứng, chỉ dùng để gọi đúng tên. X-Agents không liên kết với, không được tài trợ hay xác nhận bởi
+các chủ sở hữu đó.
