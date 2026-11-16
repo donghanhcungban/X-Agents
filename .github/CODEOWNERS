@@ -1,25 +1,25 @@
 # Ai phải duyệt vùng nào. Quy tắc: thay đổi càng khó đảo ngược thì càng cần người sở hữu vùng đó xem.
 # GitHub dùng dòng KHỚP CUỐI CÙNG, nên thứ tự dưới đây có ý nghĩa: đặc thù đứng sau tổng quát.
 
-*                                       @seeker19110
+*                                       @www-donghanhcungban-org
 
 # Prompt và skill là code (ADR-0004): đổi nội dung phải kèm tăng version, golden và eval.
-/companies/software-company/agents/                @seeker19110
-/companies/software-company/skills/                @seeker19110
+/companies/software-company/agents/                @www-donghanhcungban-org
+/companies/software-company/skills/                @www-donghanhcungban-org
 
 # Hợp đồng giữa các agent: đổi schema là đổi giao diện của cả hệ (ADR-0014).
-/companies/software-company/topics/                @seeker19110
+/companies/software-company/topics/                @www-donghanhcungban-org
 
 # Quyết định kiến trúc và cổng con người duyệt.
-/companies/software-company/docs/adr/              @seeker19110
-/companies/software-company/gates/                 @seeker19110
+/companies/software-company/docs/adr/              @www-donghanhcungban-org
+/companies/software-company/gates/                 @www-donghanhcungban-org
 
 
 # OAuth client và lưu trữ token của gateway: đổi sai là lộ tài khoản Google trong pool.
-/platform/gateway/src/gateway/auth.py             @seeker19110
+/platform/gateway/src/gateway/auth.py             @www-donghanhcungban-org
 
 # Hạ tầng CI và chính các quy tắc này.
-/.github/                                @seeker19110
+/.github/                                @www-donghanhcungban-org
 
 # keeper: công ty bảo trì tự vận hành, chỉ đọc GitHub — đổi sai là vá nhầm hoặc phát hành nhầm.
-/companies/keeper/                                 @seeker19110
+/companies/keeper/                                 @www-donghanhcungban-org
