@@ -36,6 +36,9 @@ packages = ["src/company"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+# pytest-asyncio 1.4.1 cảnh báo (lỗi, vì filterwarnings = error) khi khoá này để trống; "function" giữ đúng hành vi cũ
+# (không fixture async nào có scope rộng hơn) và là mặc định tương lai của pytest-asyncio.
+asyncio_default_fixture_loop_scope = "function"
 # Cảnh báo là lỗi: DeprecationWarning của thư viện hay ResourceWarning socket/file phải hiện ra trong CI,
 # không trôi qua trong 80 dòng log. Ngoại lệ duy nhất: runpy cảnh báo khi chạy lại một module đã import —
 # đúng thứ ba test `*_main.py` cố ý làm để phủ nhánh `if __name__ == "__main__"`.
