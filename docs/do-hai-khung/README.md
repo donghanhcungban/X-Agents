@@ -44,8 +44,8 @@ và CLI `claude` đã đăng nhập. **Không** để khoá thật nào trên m�
 ```bash
 export DO=/srv/do-hai-khung                  # thư mục lượt đo, NGOÀI cả hai repo khung
 mkdir -p $DO/ket-qua
-git clone https://github.com/seeker19110/X-Agents    $DO/X-Agents
-git clone https://github.com/seeker19110/X-Templates $DO/X-Templates
+git clone https://github.com/www-donghanhcungban-org/X-Agents    $DO/X-Agents
+git clone https://github.com/www-donghanhcungban-org/X-Templates $DO/X-Templates
 cd $DO/X-Agents && uv sync
 cp docs/do-hai-khung/bang-gia.example.json $DO/bang-gia.json   # điền giá USD/1M token từ trang giá chính thức hôm nay
 ```
