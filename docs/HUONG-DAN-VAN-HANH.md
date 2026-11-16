@@ -189,7 +189,7 @@ Khi lệnh in tiếng Việt lỗi mã hoá (locale không UTF-8), đặt `PYTHO
 ## 2. Cài đặt
 
 ```bash
-git clone https://github.com/seeker19110/X-Agents.git
+git clone https://github.com/www-donghanhcungban-org/X-Agents.git
 cd X-Agents
 
 # cả repo là một uv workspace: một lệnh cài cả năm package vào một .venv ở gốc

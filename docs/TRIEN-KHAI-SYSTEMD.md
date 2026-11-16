@@ -18,7 +18,7 @@ Ubuntu có systemd (máy chủ thật hoặc VPS; WSL2 bật systemd dùng đư�
 | Tài khoản gateway | `cd platform/gateway && uv run python -m gateway status` | nếu dùng Antigravity; xem §5 cho máy không có trình duyệt |
 
 ```bash
-git clone https://github.com/seeker19110/X-Agents.git ~/X-Agents
+git clone https://github.com/www-donghanhcungban-org/X-Agents.git ~/X-Agents
 cd ~/X-Agents
 uv sync --locked                 # unit chạy `uv run --no-sync`: môi trường phải dựng sẵn ở đây
 cp companies/software-company/llm.example.yaml companies/software-company/llm.yaml   # rồi sửa theo gói tài khoản
