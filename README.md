@@ -160,6 +160,20 @@ topic (JSON Schema, có key) ──► registry: agent nào nhận topic nào
 Template xuất dữ liệu theo chính sách này; consumer kiểm hash được ghim độc lập, đủ AC và bytes spec.
 Không copy runtime, không tự duyệt hoặc phát hành: [cách dùng và ranh giới](docs/integrations/template-handoff.md).
 
+## Ủng hộ và liên hệ
+
+Dự án miễn phí và mở mã. Nếu nó giúp bạn tiết kiệm thời gian, bạn có thể ủng hộ để tác giả duy trì và phát triển tiếp:
+
+<img src="docs/assets/donate-vietqr-techcombank.png" alt="Mã VietQR ủng hộ: Techcombank, số tài khoản 890977819110" width="260">
+
+- Quét mã VietQR bằng ứng dụng ngân hàng bất kỳ, hoặc chuyển khoản **Techcombank — số tài khoản `890977819110`**.
+- Liên hệ, góp ý, hợp tác: điện thoại / Zalo **[+84 977 819 110](https://zalo.me/0977819110)** ·
+  email **admin@donghanhcungban.org**. Lỗi và đề xuất tính năng xin mở issue trên GitHub.
+- **Hỗ trợ triển khai:** tác giả hỗ trợ cài đặt và áp dụng dự án cho nhu cầu của bạn — **trực tiếp tại TP. Hồ Chí Minh**
+  hoặc **online** ở bất kỳ đâu. Liên hệ qua điện thoại/Zalo hoặc email ở trên để trao đổi.
+
+Ủng hộ là tự nguyện, không kèm quyền lợi riêng; hỗ trợ triển khai thoả thuận riêng theo từng dự án.
+
 ## Giấy phép
 
 Apache License 2.0 — xem [`LICENSE`](LICENSE).
