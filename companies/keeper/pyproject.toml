@@ -30,6 +30,9 @@ packages = ["src/keeper"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+# pytest-asyncio 1.4.1 cảnh báo (lỗi, vì filterwarnings = error) khi khoá này để trống; "function" giữ đúng hành vi cũ
+# (không fixture async nào có scope rộng hơn) và là mặc định tương lai của pytest-asyncio.
+asyncio_default_fixture_loop_scope = "function"
 
 [tool.coverage.run]
 source = ["src/keeper"]

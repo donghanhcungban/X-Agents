@@ -6,6 +6,8 @@ Phiên bản: repo chưa gắn tag phiên bản cho chính nó (tag `v*` là c�
 
 ## Chưa phát hành
 
+- chore(deps): **nâng nhóm dev (mypy 2.4.1, pytest 9.2.0, pytest-asyncio 1.4.1.post1, ruff 0.17.3, types-pyyaml 6.0.12.20261030) kèm khai `asyncio_default_fixture_loop_scope = "function"` ở cả năm gói.** pytest-asyncio 1.4.1 phát `PytestDeprecationWarning` lúc cấu hình khi khoá này để trống; `filterwarnings = error` của console và software-company biến nó thành `INTERNALERROR` (#572 đỏ). `"function"` giữ đúng hành vi cũ (không fixture async nào có scope rộng hơn). Thay thế #572.
+
 - chore: **chuyển chủ repo sang `www-donghanhcungban-org`.** Link repo đang dùng (`.github/FUNDING.yml`, `NOTICE`, lệnh `git clone` trong `docs/HUONG-DAN-VAN-HANH.md`, `docs/TRIEN-KHAI-SYSTEMD.md`, `docs/do-hai-khung/README.md`) và `.github/CODEOWNERS` trỏ về chủ mới; link cũ redirect 301. Ghi chép lịch sử (ADR, báo cáo, nhật ký phiên, CHANGELOG cũ), `.xtemplates/` và ref `seeker19110/projects-template` giữ nguyên.
 
 - docs: **mục ủng hộ và hỗ trợ triển khai, `NOTICE`.** README thêm mục "Ủng hộ và liên hệ" (mã VietQR `docs/assets/donate-vietqr-techcombank.png`, liên hệ, hỗ trợ triển khai tại TP. Hồ Chí Minh hoặc online); `.github/FUNDING.yml` trỏ về mục đó; `NOTICE` ghi phạm vi Apache-2.0, thành phần bên thứ ba (skill ECC, mattpocock — MIT), nguồn gốc fork `humanlayer/12-factor-agents` còn trong lịch sử git (Apache-2.0 / CC BY-SA 4.0) và câu nhãn hiệu. Giấy phép giữ nguyên Apache-2.0.
