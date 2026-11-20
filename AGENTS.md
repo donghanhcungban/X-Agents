@@ -207,8 +207,3 @@ Nêu giả định thành lời và đi tiếp với giả định đó, trừ k
 Không hỏi "tiếp không?"; không tóm tắt tiến độ thay cho làm việc. Bốn thứ được phép dừng lại hỏi người:
 thao tác không đảo ngược được, việc nhạy cảm bảo mật, tác động ra ngoài worktree (merge/push/publish), và kế
 hoạch hỏng tới mức mọi hướng đều là đoán.
-
-## /factory
-
-Dùng `/factory <yêu cầu>` để mở hoặc tiếp tục một vòng sản phẩm. Đọc trạng thái bằng
-`python3 .xtemplates/scripts/xt_flow.py --json` rồi chạy các cổng của dự án.

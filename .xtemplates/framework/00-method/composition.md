@@ -1,7 +1,7 @@
 ---
 title: Ghép blueprint cho một dự án
 kind: method
-updated: 2026-11-19
+updated: 2026-10-16
 ---
 
 # Ghép blueprint cho một dự án
@@ -39,23 +39,21 @@ python3 .xtemplates/scripts/xt.py list industries
 # Ghép blueprint: web app cho thương mại điện tử, quy mô production
 python3 .xtemplates/scripts/xt.py compose --profile web-app --industry ecommerce --scale M --out BLUEPRINT.md
 
-# Theo dõi tiến độ; --strict trả exit 1 nếu còn MUST chưa đạt; --run chạy lại lệnh `— Kiểm:` của mục đã tick (cổng phát hành)
-python3 .xtemplates/scripts/xt.py blueprint-status BLUEPRINT.md --strict --run
+# Theo dõi tiến độ; --strict trả exit 1 nếu còn MUST chưa đạt (dùng làm cổng phát hành)
+python3 .xtemplates/scripts/xt.py blueprint-status BLUEPRINT.md --strict
 ```
 
 ## Dùng blueprint thế nào
 
 1. **Commit `BLUEPRINT.md` vào repo dự án** (G1). Đây là phạm vi chất lượng đã thống nhất.
-2. **Tick bằng bằng chứng máy chạy lại được** (`LOOP-DESIGN-023`): chỉ đổi `[ ]` → `[x]` khi phần "→ Kiểm" của mục
-   chạy được bằng lệnh, và ghi lệnh đó ở cuối dòng: `— Kiểm: \`<lệnh exit 0 = đạt>\`` — một cặp backtick, nhiều lệnh gộp bằng `&&` (vd `— Kiểm: \`test -f .env.example && git check-ignore -q .env\``).
-   `blueprint-status --run` và `loop verify` chạy lại mọi lệnh này; đỏ = mục **chưa đạt** dù đã tick. Mục không có cách
-   kiểm bằng lệnh (tài liệu, quyết định) ghi `— Bằng chứng: <file:dòng | URL job CI>`; `--run` liệt kê số MUST tick kiểu
-   này để reviewer soát. Mục còn thiếu có thể ghi `— Thiếu: <việc cần làm>`. Ghi bằng chứng ở PR tương ứng.
+2. **Tick bằng bằng chứng**: chỉ đổi `[ ]` → `[x]` khi có bằng chứng máy (CI job, test, báo cáo scan, file cấu hình),
+   ghi ở cuối dòng: `— Bằng chứng: <file:dòng | job CI | lệnh>`. Mục còn thiếu có thể ghi `— Thiếu: <việc cần làm>`.
+   Ghi bằng chứng ở PR tương ứng.
 3. **Miễn trừ có lý do**: mục không áp dụng → `[~]` kèm `— Không áp dụng: <điều kiện>` (vd "không có thanh toán"); mục có áp dụng mà bỏ/hoãn → `— Miễn: <lý do>`, ở mức MUST thêm `Duyệt: "<lời chủ dự án>" <ngày>` hoặc link (`LOOP-STOP-024`). Máy chặn miễn
-   trừ thiếu lý do, và mục ghi **cả hai** nghĩa (`Không áp dụng` lẫn `Miễn`) ở mọi mức (T-2511).
+   trừ thiếu lý do.
 4. **Không sửa chữ của mục** trong blueprint dự án; muốn đổi yêu cầu → sửa khung (PR vào X-Templates) rồi ghép lại.
 5. **Ghép lại khi khung cập nhật**: chạy lại đúng lệnh `compose ... --out BLUEPRINT.md`. Khi file đã có, máy giữ ô trạng thái
-   và ghi chú cuối dòng (`— Kiểm:` / `— Bằng chứng:` / `— Miễn:` / `— Thiếu:`) theo **ID**; mục mới vào ở `[ ]`, mục đã bỏ khỏi khung biến mất.
+   và ghi chú cuối dòng (`— Bằng chứng:` / `— Miễn:` / `— Thiếu:`) theo **ID**; mục mới vào ở `[ ]`, mục đã bỏ khỏi khung biến mất.
    Xem diff trước khi commit.
 6. **Hai file** (ADR-0012 của repo khung): `--out BLUEPRINT.md` ghi `BLUEPRINT.md` chỉ chứa MUST ở quy mô đã chọn và
    `BLUEPRINT-BACKLOG.md` chứa SHOULD/MAY. Agent đọc file chính mỗi vòng; backlog không chặn "xong", làm khi còn ngân
@@ -64,24 +62,17 @@ python3 .xtemplates/scripts/xt.py blueprint-status BLUEPRINT.md --strict --run
 
 ## Chọn quy mô
 
-Trả lời theo **hiện trạng**, không theo dự định (ADR-0081 của repo khung): sản phẩm *sẽ* có người dùng vẫn là S cho tới
-khi sắp phát hành cho họ.
-
-| Câu hỏi (về hiện tại) | Có → |
+| Câu hỏi | Có → |
 |---|---|
-| Đang có người dùng thật ngoài đội phát triển? | ≥ M |
-| Đang giữ tiền thật, dữ liệu sức khoẻ, dữ liệu trẻ em, dữ liệu định danh nhạy cảm? | L (hoặc M + gói ngành đúng) |
+| Có người dùng thật ngoài đội phát triển? | ≥ M |
+| Có tiền thật, dữ liệu sức khoẻ, dữ liệu trẻ em, dữ liệu định danh nhạy cảm? | L (hoặc M + gói ngành đúng) |
 | Nhiều đội cùng phát triển, SLA ký với khách hàng, kiểm toán bên ngoài? | L |
-| Đang xây hoặc thử nghiệm, chưa lưu dữ liệu thật? | S |
+| Chỉ thử nghiệm ý tưởng, không lưu dữ liệu thật? | S |
 
-`compose` không `--scale` giữ quy mô của blueprint đã ghép ở `--out`, chưa có thì S (có bản mà quy mô không đọc được → lỗi, truyền `--scale`). Lên quy mô ở ranh giới pha: `/complete` bước 1
-ghép lại `--scale M` (hoặc L) trước khi phát hành cho người dùng thật — MUST của quy mô đó vào PLAN-harden, trước
-`release-check`.
-
-Quy mô quyết định khối lượng: blueprint `web-app` 70 MUST ở S, 473 ở M, 1.146 ở L (đo 2026-10-19). Chọn đúng quy mô quan trọng hơn chọn đủ module. Quy mô cũng quyết định cỡ file agent đọc: `web-app` + `ecommerce` có `BLUEPRINT.md` 41 KB ở S, 229 KB ở M, 483 KB ở L; bản một file (`--full`) ~690 KB ở cả ba (đo 2026-10-16).
+Quy mô quyết định khối lượng: blueprint `web-app` 70 MUST ở S, 468 ở M, 1.124 ở L (đo 2026-10-14). Chọn đúng quy mô quan trọng hơn chọn đủ module. Quy mô cũng quyết định cỡ file agent đọc: `web-app` + `ecommerce` có `BLUEPRINT.md` 41 KB ở S, 229 KB ở M, 483 KB ở L; bản một file (`--full`) ~690 KB ở cả ba (đo 2026-10-16).
 
 ## Nguồn
 
 - Quy ước định dạng: [`conventions.md`](conventions.md).
-- Ý tưởng "checklist máy đọc được, GO/NO-GO theo bằng chứng": `www-donghanhcungban-org/stored` mục 09 (deployment-checklist,
+- Ý tưởng "checklist máy đọc được, GO/NO-GO theo bằng chứng": `seeker19110/stored` mục 09 (deployment-checklist,
   production-readiness-checklist), đọc 2026-10-13.

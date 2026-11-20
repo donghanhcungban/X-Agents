@@ -3,7 +3,7 @@ title: Threat model (STRIDE), tài sản, ranh giới tin cậy, biện pháp
 kind: module
 prefix: SEC-TM
 applies_to: [all]
-updated: 2026-10-24
+updated: 2026-10-14
 ---
 
 # Threat model (STRIDE), tài sản, ranh giới tin cậy, biện pháp
@@ -50,7 +50,7 @@ xác minh phiên bản trước khi dùng; tài liệu Markdown theo mẫu của
 - [ ] `SEC-TM-006` **MUST** Mọi mối đe doạ mức **Cao** có biện pháp trỏ tới ID checklist khung, test hoặc cấu hình cụ thể — không có hàng Cao ở trạng thái "accept" khi lên production. → Kiểm: `blueprint-status` của các ID được trỏ = đạt; cổng G4 chặn nếu còn Cao chưa có biện pháp. · Nguồn: NIST SSDF PW.1.1
 - [ ] `SEC-TM-007` **MUST@L** Mối đe doạ "accept" có người ký, lý do và ngày xem lại (≤ 12 tháng). → Kiểm: cột Người ký + Hạn xem lại không rỗng; CI cảnh báo khi quá hạn. · Nguồn: ISO/IEC 27005 (chấp nhận rủi ro có chủ)
 - [ ] `SEC-TM-008` **MUST@L** Đầu vào từ mọi ranh giới tin cậy được đánh dấu "không tin" và có biện pháp validate ở biên (trỏ [`appsec-web.md`](appsec-web.md), [`ai-security.md`](ai-security.md)). → Kiểm: mỗi mũi tên vào hệ thống trên DFD có tham chiếu tới middleware/schema validate trong code. · Nguồn: ASVS 5.0 V2; P6
-- [ ] `SEC-TM-009` **SHOULD** Threat model được review bởi người không viết thiết kế (hoặc agent reviewer năng lực cao hơn tác giả, `LOOP-ORCH-005`) trước cổng G4. → Kiểm: PR threat model có ≥ 1 approval khác tác giả. · Nguồn: OWASP Threat Modeling CS §"Did we do a good enough job"
+- [ ] `SEC-TM-009` **SHOULD** Threat model được review bởi người không viết thiết kế (hoặc agent reviewer khác model với tác giả) trước cổng G4. → Kiểm: PR threat model có ≥ 1 approval khác tác giả. · Nguồn: OWASP Threat Modeling CS §"Did we do a good enough job"
 - [ ] `SEC-TM-010` **SHOULD** Có mục "Giả định tin cậy" liệt kê thứ hệ thống tin mà không kiểm (vd CSDL quản lý của cloud, OS của người dùng) để lộ rõ điểm mù. → Kiểm: mục tồn tại, ≥ 3 giả định. · Nguồn: NIST SP 800-207 (không tin theo vị trí mạng)
 - [ ] `SEC-TM-011` **SHOULD** Hệ có AI: thêm hàng cho từng ASI01–10 (OWASP Agentic 2026) với trạng thái áp dụng/N/A. → Kiểm: bảng ánh xạ ASI trong threat model; chi tiết biện pháp ở `SEC-AI-*`. · Nguồn: OWASP Top 10 Agentic 2026
 - [ ] `SEC-TM-012` **SHOULD** Có attack tree cho 1–3 tài sản quý nhất (tiền, dữ liệu nhạy cảm, khoá ký) khi dự án ≥ M. → Kiểm: mục Attack tree với ≥ 1 cây, lá cây trỏ biện pháp. · Nguồn: OWASP Threat Modeling CS (attack trees)
@@ -89,4 +89,4 @@ xác minh phiên bản trước khi dùng; tài liệu Markdown theo mẫu của
 - NIST SP 800-207 Zero Trust Architecture (08/2020): <https://csrc.nist.gov/pubs/sp/800/207/final> — xác minh 2026-10-13.
 - OWASP Top 10 for Agentic Applications 2026 (ASI01–10, công bố 2025-12-09): ghi theo `research/2026-10-13-ai-agent-research.md` §5.1 [F]; trang genai.owasp.org trả 403 khi fetch lại ngày 2026-10-13.
 - ISO/IEC 27005 (quản lý rủi ro an toàn thông tin) — (chưa xác minh phiên bản hiện hành ngày 2026-10-13; tiêu chuẩn trả phí).
-- Khung cũ X-stored `docs/specs/AI-HARNESS-AND-COMPANY-SPEC.md` §A4.5 (ánh xạ ASI), commit `1b80fe4`; catalog `www-donghanhcungban-org/stored` mục 09 §1.3 (STRIDE trong checklist Security), đọc 2026-10-13.
+- Khung cũ X-stored `docs/specs/AI-HARNESS-AND-COMPANY-SPEC.md` §A4.5 (ánh xạ ASI), commit `1b80fe4`; catalog `seeker19110/stored` mục 09 §1.3 (STRIDE trong checklist Security), đọc 2026-10-13.
