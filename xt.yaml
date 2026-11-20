@@ -34,3 +34,31 @@ merge_risk_paths: ""
 # Tuỳ chọn, agent đọc và chạy trực tiếp (dev-task không chạy): e2e, audit (dependency), perf (k6/lighthouse), migrate (áp migration local), install, dev, init, smoke
 e2e: ""
 audit: uv export --no-hashes --no-dev --all-packages | sed '/^-e /d' > /tmp/req.txt && uvx pip-audit --strict -r /tmp/req.txt
+
+# Khoá mới của khung (bản 3.34.0 (5fdee31)) — bật bằng cách bỏ "# "; vắng khoá = hành vi cũ
+# setup: "" # cài phụ thuộc trước mỗi job CI (npm ci · pip install …); trống = bỏ qua
+# format_check: "" # sàn M/L: kiểm format không ghi file, đỏ khi lệch
+# coverage: "" # sàn M/L: test có ngưỡng coverage; artefact ra mktemp, không `|| true`
+# commit_gate: fast
+# test_fast: "" # test liên quan file đổi (XT_CHANGED_FILES, mỗi dòng một file); trống → test
+# merge_review: optional
+# merge_hard_exceptions: auto
+# delivery_phase: build
+# e2e_setup: "" # trước e2e: cài trình duyệt (vd npx playwright install --with-deps chromium)
+# e2e_affected: "" # chỉ spec của lát đang làm (Gate mỗi task); trống = e2e
+# attack: "" # tấn công thử: DAST (ZAP baseline/API scan) · fuzz API (schemathesis run …) trên bản chạy cục bộ/staging
+# perf: "" # kiểm tải có ngưỡng, đỏ khi vượt ngân sách (vd k6 run với thresholds)
+# migration_check: "" # cổng production (ADR-0062): migration tiến + lùi trên bản sao dữ liệu/staging
+# rollback: "" # cổng production: diễn tập quay về bản trước (tag/artifact cũ + migration lùi)
+# acceptance: "" # cổng production: kiểm thử nghiệm thu theo tiêu chí chấp nhận (UAT tự động)
+# acceptance_report: "" # vd reports/junit.xml — trong dự án VÀ trong .gitignore (file chưa commit làm hàng `tree` FAIL)
+# release_artifacts: "" # artifact ứng viên, cách nhau bởi khoảng trắng (sidecar <file>.sha256 nếu có) → `subject.digest`; GO-NO-GO ghi dòng `subject: digest` (mẫu GO-NO-GO.md §1)
+# release_approval_days: "" # hạn chữ ký GO-NO-GO §5 để `promotion: approved` (mặc định 30 ngày)
+# release_signoff: "" # agent = agent ký §5 GO-NO-GO bằng `xt.py release-sign` khi release-check không FAIL và chỉ còn chữ ký (ADR-0074); trống/human = người ký. Có hiệu lực khi cả cây lẫn bản đã commit ở nhánh chính khai; PR đổi khoá luôn người merge
+# preview: "" # cách chạy thử bản trình người duyệt (`xt.py stage submit` ghi lại — ADR-0058); vd npm run preview
+# preview_smoke: "" # Gate bản trình: `stage submit` chạy (qua guard), exit ≠ 0 → không trình (D-247); vd npm run build && npx playwright test smoke
+# stage_approval: agent # agent tự nghiệm thu giai đoạn (`stage approve` bản trình còn nguyên — ADR-0069, chủ dự án 2026-11-04); human = chỉ người ngoài phiên agent (ADR-0058). Có hiệu lực khi cả cây lẫn bản đã commit ở nhánh chính khai
+# claude_min_version: "" # doctor cảnh báo khi Claude Code thấp hơn (LOOP-HARNESS-026)
+# ai_attribution: "" # forbid = guard chặn commit/PR ghi tên model hay URL phiên AI (LOOP-HARNESS-027)
+# pr_title_check: "" # off = không đòi tiêu đề PR `<type>(scope): mô tả` ≤ 100 ký tự
+# harness_permissions: "" # own = install.py giữ quyền của dự án (không thêm allow/deny khung); lệnh hook khung theo dạng dự án đang dùng (có ${CLAUDE_PROJECT_DIR} → tuyệt đối, không → `bash .claude/hooks/x.sh`) — ADR-0073

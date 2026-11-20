@@ -3,7 +3,7 @@ title: Build, tooling, lint/format/type, env công khai
 kind: module
 prefix: FE-BUILD
 applies_to: [web-app, mobile-app, desktop-app, static-site, game, monorepo]
-updated: 2026-10-14
+updated: 2026-10-21
 ---
 
 # Build, tooling, lint/format/type, env công khai
@@ -47,7 +47,7 @@ updated: 2026-10-14
 - [ ] `FE-BUILD-007` **MUST@L** Mục tiêu trình duyệt tường minh (`browserslist` 4.29.3 hoặc `build.target`), ghi trong repo và khớp chính sách hỗ trợ của sản phẩm; polyfill chỉ theo mục tiêu. → Kiểm: file `.browserslistrc`/`build.target` tồn tại; `npx browserslist` in danh sách; không `core-js` toàn bộ trong bundle. · Nguồn: Vite build options (`baseline-widely-available`)
 - [ ] `FE-BUILD-008` **MUST@L** Bundle được phân tích khi thêm dependency hoặc khi ngân sách báo; dead code/dependency thừa bị gỡ định kỳ. → Kiểm: `knip` 0 unused trong CI; `size-limit` xanh; PR thêm dependency > 20 kB có ảnh analyzer. · Nguồn: [`performance-web-vitals.md`](performance-web-vitals.md); [`../01-baseline/dependencies.md`](../01-baseline/dependencies.md)
 - [ ] `FE-BUILD-009` **MUST@L** Build không cần mạng ngoài registry (không tải binary/font/schema lúc build từ URL không ghim); artifact build gắn commit SHA và có thể tái tạo. → Kiểm: build trong CI với proxy chỉ cho registry xanh; artifact có `BUILD_SHA` (env/meta tag).
-- [ ] `FE-BUILD-010` **MUST@L** Một job `quality` gom typecheck/lint/test/build làm required check chất lượng (ngoài `protection-guard`, `gitleaks`, `dep-audit`); thời gian ≤ ngân sách (vd 10 phút) nhờ cache (`node_modules`, `.next/cache`, Playwright browsers). → Kiểm: branch ruleset yêu cầu job `quality`; cache key theo lockfile; thời gian job theo dõi. · Nguồn: catalog 23 §2.5, 13 §4b
+- [ ] `FE-BUILD-010` **MUST@L** Một job `quality` gom typecheck/lint/test/build làm required check chất lượng (ngoài `gitleaks`); thời gian ≤ ngân sách (vd 10 phút) nhờ cache (`node_modules`, `.next/cache`, Playwright browsers). → Kiểm: branch ruleset yêu cầu job `quality`; cache key theo lockfile; thời gian job theo dõi. · Nguồn: catalog 23 §2.5, 13 §4b
 - [ ] `FE-BUILD-011` **SHOULD** Pre-commit chỉ chạy trên file staged (lint/format/typecheck nhanh) < 10 s; pre-push chạy test liên quan. → Kiểm: `lefthook.yml` có `{staged_files}`; đo thời gian hook.
 - [ ] `FE-BUILD-012` **SHOULD** Cấu hình tool chain nằm ở file (không trong `package.json` scripts dài); script đặt tên chuẩn: `dev`, `build`, `typecheck`, `lint`, `format`, `test`, `test:e2e`, `check:*` — và khai báo trong `xt.yaml`/tài liệu để agent chạy đúng. → Kiểm: `package.json` có đủ script; `xt.yaml` trỏ tới. · Nguồn: [`../18-cross-cutting/docs-for-ai-agents.md`](../18-cross-cutting/docs-for-ai-agents.md)
 - [ ] `FE-BUILD-013` **SHOULD** Trùng lặp mã ≤ ngưỡng dự án (jscpd) và theo dõi không tăng. → Kiểm: `jscpd --threshold <n>` trong CI.
@@ -95,4 +95,4 @@ updated: 2026-10-14
 - endoflife.date — Node.js (24 Active LTS tới 2026-10-20, EOL 2028-04-30; 22 Maintenance, EOL 2027-04-30; 26 LTS từ 2026-10-28; 20 EOL 2026-04-30): <https://endoflife.date/api/nodejs.json> — xác minh 2026-10-13.
 - Biome blog (v2.5 05/06/2026: > 500 rule; v2.4 10/02/2026: 15 rule a11y HTML): <https://biomejs.dev/blog/> — xác minh 2026-10-13.
 - Phiên bản npm `latest` (2026-10-13): typescript 7.0.2 · vite 8.3.4 · @vitejs/plugin-react 6.1.2 · next 16.4.0 · nuxt 4.6.1 · @sveltejs/kit 3.0.1 · astro 7.3.8 · @biomejs/biome 2.5.15 · eslint 10.12.0 · typescript-eslint 8.71.2 · oxlint 1.87.0 · knip 6.41.0 · jscpd 5.4.1 · lefthook 2.2.1 · husky 9.1.7 · lint-staged 17.6.0 · browserslist 4.29.3 · @t3-oss/env-nextjs 0.13.11 · size-limit 14.2.0.
-- Catalog `seeker19110/stored` mục 13 §4b–4c (biome/oxlint + knip + jscpd; một job `quality` required; pre-commit ở máy và CI), mục 09 §1.4 (không `ignoreBuildErrors`), mục 23 §2.4 (`next dev` ghi đè AGENTS.md), đọc 2026-10-13; `research/2026-10-13-stored-catalog-extraction.md` §2.9.
+- Catalog `www-donghanhcungban-org/stored` mục 13 §4b–4c (biome/oxlint + knip + jscpd; một job `quality` required; pre-commit ở máy và CI), mục 09 §1.4 (không `ignoreBuildErrors`), mục 23 §2.4 (`next dev` ghi đè AGENTS.md), đọc 2026-10-13; `research/2026-10-13-stored-catalog-extraction.md` §2.9.
