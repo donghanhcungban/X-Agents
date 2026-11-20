@@ -1,0 +1,3 @@
+[submodule "tools/x-templates"]
+	path = .xtemplates/factory
+	url = https://github.com/www-donghanhcungban-org/X-Templates.git

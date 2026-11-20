@@ -12,6 +12,8 @@ Nguyên tắc chung cho mọi công ty:
 
 ## Các thành phần
 
+Dùng `/factory <yêu cầu>` để tiếp tục theo ba giai đoạn MVP, hoàn thiện và tối ưu. Xem bước kế tiếp bằng `scripts/factory.sh flow --json` từ checkout của hub. Lần đầu cần Git, uv và mạng để lấy X-Templates ở commit đã ghim cùng CPython 3.15.2. Các package tiếp tục dùng Python của workspace.
+
 Hai nhóm thư mục, ranh giới theo vai trò (ADR-0011): `platform/` là hạ tầng dùng chung — không thuộc công ty nào;
 `companies/` là các công ty, mỗi cái có agent, topic, human gate và khách riêng.
 
